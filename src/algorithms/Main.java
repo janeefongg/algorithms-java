@@ -1,4 +1,4 @@
-package com.example.java;
+package algorithms;
 
 public class Main {
 
