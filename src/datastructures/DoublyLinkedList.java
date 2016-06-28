@@ -4,31 +4,45 @@ package datastructures;
  * Created by Jane on 6/27/16.
  */
 public class DoublyLinkedList {
-    private Node head;
-    private Node tail;
+    private DoublyLinkedNode head;
 
-    public voic insertAtTail(int data) {
-        Node newNode = new Node(data);
-        if (this.head == null) {
-            this.head = newNode;
+    public void insertAtHead (int data) {
+        DoublyLinkedNode newNode = new DoublyLinkedNode(data);
+        newNode.setNextNode(this.head);
+        if (this.head != null) {
+            this.head.setPreviousNode(newNode);
         }
-
-        if (this.tail != null) {
-            this.tail.setNextNode(newNode);
-            this.tail = newNode;
-        }
+        this.head = newNode;
     }
 
-    public String toString() {
-        String result = "{";
-        Node current = this.head;
+    public int length() {
+        if (head == null) {
+            return 0;
+        }
+        int length = 0;
+        DoublyLinkedNode current = this.head;
 
         while(current != null) {
-            result += current.toString() + ", ";
+            length++;
             current = current.getNextNode();
         }
 
-        result += "}";
-        return result;
+        return length;
+    }
+
+    @Override
+    public String toString () {
+        StringBuilder sb = new StringBuilder();
+        DoublyLinkedNode node = this.head;
+
+        while (node != null) {
+            sb.append("Node data")
+            .append(node)
+            .append("\n");
+
+            node = node.getNextNode();
+        }
+
+        return sb.toString();
     }
 }
