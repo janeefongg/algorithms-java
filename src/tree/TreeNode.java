@@ -14,6 +14,22 @@ public class TreeNode {
         this.data = data;
     }
 
+    public Integer smallest () {
+        if (this.leftChild == null) {
+            return this.data;
+        }
+
+        return this.leftChild.smallest();
+    }
+
+    public Integer largest () {
+        if (this.rightChild == null) {
+            return this.data;
+        }
+
+        return this.rightChild.largest();
+    }
+
     public TreeNode find (Integer data) {
         if (this.data == data && !isDeleted) {
             return this.data;
