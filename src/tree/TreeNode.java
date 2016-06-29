@@ -8,13 +8,14 @@ public class TreeNode {
     private Integer data;
     private TreeNode leftChild;
     private TreeNode rightChild;
+    private boolean isDeleted = false;
 
     public TreeNode (Integer data) {
         this.data = data;
     }
 
     public TreeNode find (Integer data) {
-        if (this.data == data) {
+        if (this.data == data && !isDeleted) {
             return this.data;
         }
 
@@ -66,5 +67,13 @@ public class TreeNode {
 
     public void setRightChild(TreeNode rightChild) {
         this.rightChild = rightChild;
+    }
+
+    public void delete () {
+        this.isDeleted = true;
+    }
+
+    public boolean isDeleted () {
+        return this.isDeleted;
     }
 }
